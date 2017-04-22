@@ -7,7 +7,10 @@
 #
 set -e
 
-# Example
 
-#apt-get update
-#apt-get install tree
+# Workaround to enable htaccess file 
+sed -i '164,168s/AllowOverride\ None/AllowOverride All/g' /etc/apache2/apache2.conf
+service apache2 restart
+
+# Setup PhishTank service
+# echo $(crontab -l ; echo '* * * * * echo "Blah" > /home/vagrant/blah.txt') | crontab -
