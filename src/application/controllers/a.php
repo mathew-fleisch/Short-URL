@@ -5,19 +5,9 @@ class a extends CI_Controller {
 	function _remap($param) {
         $this->index($param);
     }
-	public function index($param)
-	{
-		$this->load->model('Model_Api');
-		if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
-			$ip = $_SERVER['HTTP_CLIENT_IP'];
-		} elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-			$ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
-		} else {
-			$ip = $_SERVER['REMOTE_ADDR'];
-		}
-		if (isset($_SERVER['HTTP_USER_AGENT'])) { 
-			$browser = $_SERVER['HTTP_USER_AGENT']; 
-		} else { $browser = NULL; }
+	public function index($param) {
+		$ip = $this->input->ip_address();
+		$browser = $this->input->user_agent();
 		if (isset($_SERVER['HTTP_REFERER'])) { 
 			$referrer = $_SERVER['HTTP_REFERER']; 
 		} else { $referrer = NULL; }
