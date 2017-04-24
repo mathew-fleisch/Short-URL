@@ -12,5 +12,15 @@ set -e
 sed -i '164,168s/AllowOverride\ None/AllowOverride All/g' /etc/apache2/apache2.conf
 service apache2 restart
 
+# Initialize Database
+mysql -uroot < /var/www/application/config/init.sql
+
+
 # Setup PhishTank service
-# echo $(crontab -l ; echo '* * * * * echo "Blah" > /home/vagrant/blah.txt') | crontab -
+mkdir -p /var/www/data
+cd /var/www/data
+rm -rf online-valid.json.bz2;
+rm -rf online-valid.json;
+wget http://data.phishtank.com/data/online-valid.json.bz2
+bzip2 -d online-valid.json.bz2
+/usr/bin/php /var/www/data/phishy.php

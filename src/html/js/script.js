@@ -1,39 +1,53 @@
 var clipboard = new Clipboard('#copy-btn');
-// clipboard.on('success', function(e) {
-//     console.info('Action:', e.action);
-//     console.info('Text:', e.text);
-//     console.info('Trigger:', e.trigger);
-
-//     e.clearSelection();
-// });
-
-// clipboard.on('error', function(e) {
-//     console.error('Action:', e.action);
-//     console.error('Trigger:', e.trigger);
-// });
+var ANIMATION_SPEED = 100;
 $(document).ready(function() {
-	console.log("ready");
 
-	// Temporary event to build display first
 	$(document).on('click', '#shrink', function() {
 		var input = $('#long-url');
+		var ssl = false;
 		if(isValidURL(input.val())) { 
 			var url = encodeURIComponent($('#long-url').val());
 			// console.log('url: ', decodeURIComponent(url));
-			$('#short-url').val(decodeURIComponent(url));
-			$('#output-container').slideDown(100);
+			$.ajax({
+				url: '/api/url',
+				type: 'POST',
+				data: {
+					url: url
+				},
+				success: function(data) {
+					var json = JSON.parse(decodeURIComponent(data));
+					console.log('Success!', json);
+					if(json['success']) {
+						$('#errors').slideUp(ANIMATION_SPEED);
+						var short_url = 
+							location.protocol+'//'
+							+window.location.hostname+(location.port ? ':'+location.port: '')
+							+'/a/'+json['short'];
+						$('#short-url').val(short_url);
+						$('#visit-count').html(json['existing']);
+						$('#lazy-link').html('<a href="'+short_url+'" target="_blank">'+short_url+'</a>');
+					} else { 
+						throw_error(json['message']);
+					}
+				}
+			});
+			$('#output-container').slideDown(ANIMATION_SPEED);
 		} else {
 			console.error('Invalid url...');
-			$('#errors').html(
-				'<div class="alert alert-dismissible alert-danger">'
-				  +'<button type="button" class="close" data-dismiss="alert">&times;</button>'
-				  +'<strong>Oh snap!</strong> Invalid URL...'
-				+'</div>'
-			).slideDown(100);
+			throw_error('Invalid url...');
 		}
 	});
 
-
+	$('#long-url').keydown(function (e){ if(e.keyCode == 13){ $('#shrink').click(); } });
 	$(document).on('click', '#short-url-label', function() { $('#copy-btn').click(); });
 
 });
+function throw_error(msg) {
+	$('#output-container').slideUp(ANIMATION_SPEED);
+	$('#errors').html(
+		'<div class="alert alert-dismissible alert-danger">'
+		  +'<button type="button" class="close" data-dismiss="alert">&times;</button>'
+		  +'<strong>Oh snap!</strong> '+msg
+		+'</div>'
+	).slideDown(ANIMATION_SPEED);
+}

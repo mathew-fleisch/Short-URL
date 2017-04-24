@@ -83,3 +83,32 @@ defined('EXIT_USER_INPUT')     OR define('EXIT_USER_INPUT', 7); // invalid user 
 defined('EXIT_DATABASE')       OR define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
+
+
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Custom Constants
+|--------------------------------------------------------------------------
+|
+*/
+defined('PHISH_PATH')                 OR define('PHISH_PATH', '/var/www/data/phishy.json');
+defined('PHISH_JSON')                 OR define('PHISH_JSON', file_get_contents(PHISH_PATH));
+defined('SOMETHING_SMELLS_PHISHY')    OR define('SOMETHING_SMELLS_PHISHY', 'phish_on_the_line');
+
+//Keys 
+defined('KEYS_SUCCESS')               OR define('KEYS_SUCCESS', 'success');
+defined('KEYS_LOGGED')                OR define('KEYS_LOGGED', 'logged');
+defined('KEYS_MESSAGE')               OR define('KEYS_MESSAGE', 'message');
+defined('KEYS_URL')                   OR define('KEYS_URL', 'url');
+defined('KEYS_SHORT')                 OR define('KEYS_SHORT', 'short');
+defined('KEYS_EXISTING')              OR define('KEYS_EXISTING', 'existing');
+
+//Messages
+defined('MESSAGE_SUCCESSFUL')         OR define('MESSAGE_SUCCESSFUL', 'Successful');
+defined('MESSAGE_SHORT_URL_CREATED')  OR define('MESSAGE_SHORT_URL_CREATED', 'Short URL Created.');
+
+//Errors
+defined('ERROR_REPLACE_STRING')       OR define('ERROR_REPLACE_STRING', 'var_replace');

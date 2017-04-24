@@ -1,37 +1,17 @@
 #container { 
+	padding:1em;
 	text-align:center;
 }
 #form-container, #output-container {
-	width:300px;
-	margin: 0 auto;
-}
-#long-url {
-    width: 80%;
-    float: left;
-}
-#shrink {
-    width: 20%;
-    float: left;
+	margin: 30px auto;
 }
 #output-container { 
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
-	border: 1px solid #999;
-	padding:3px;
 	display: none;
 }
-#short-url-label { 
-}
-#short-url {
-	width:253px;
-	float: left;
-}
-
 #copy-btn { 
 	float:left;
 }
-#errors { width: 300px; margin: auto; display:none; }
+#errors { margin: auto; display:none; }
 .invert-svg { filter: invert(100%); }
 .clear { clear:both; }
 
