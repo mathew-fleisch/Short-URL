@@ -10,8 +10,6 @@ This version was written in PHP using CodeIgniter v3.1.4, and uses Javascript/jQ
 
 ## Setup
 ```
-mkdir ~/LinkShrinker
-cd ~/LinkShrinker
 git clone git@github.com:mathew-fleisch/Link-Shrinker.git
 cd ./Link-Shrinker
 vagrant up
