@@ -28,5 +28,6 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 *.sublime-workspace
 *.sublime-project
 
+data/online-valid.json.bz2
 data/online-valid.json
 data/phishy.json

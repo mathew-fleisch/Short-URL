@@ -17,10 +17,9 @@ mysql -uroot < /var/www/application/config/init.sql
 
 
 # Setup PhishTank service
-mkdir -p /var/www/data
-cd /var/www/data
-rm -rf online-valid.json.bz2;
-rm -rf online-valid.json;
-wget http://data.phishtank.com/data/online-valid.json.bz2
-bzip2 -d online-valid.json.bz2
-/usr/bin/php /var/www/data/phishy.php
+/var/www/data/phishy.sh
+if [[ $(grep -R "phishy" /var/spool/cron/crontabs) ]]; then
+	echo "Crontab already saved..."
+else 
+	echo $(crontab -l ; echo '0 * * * * /var/www/data/phishy.sh') | crontab -
+fi 
