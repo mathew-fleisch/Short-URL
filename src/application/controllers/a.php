@@ -26,9 +26,9 @@ class a extends CI_Controller {
 			$url = $this->Model_Api->get_url($param);
 			if(is_string($url)) { 				
 				header('Location: '.$url);
-			} else { echo "$url not found...."; exit(); }
+			} else { echo $url.ERROR_NOT_FOUND; exit(); }
 		} else { 
-			echo "Could not save visit...";
+			echo ERROR_REDIRECT_LOG_FAIL;
 			exit();
 		}
 	}

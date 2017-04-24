@@ -112,3 +112,5 @@ defined('MESSAGE_SHORT_URL_CREATED')  OR define('MESSAGE_SHORT_URL_CREATED', 'Sh
 
 //Errors
 defined('ERROR_REPLACE_STRING')       OR define('ERROR_REPLACE_STRING', 'var_replace');
+defined('ERROR_REDIRECT_LOG_FAIL')    OR define('ERROR_REDIRECT_LOG_FAIL', 'Could not log redirect...');
+defined('ERROR_NOT_FOUND')            OR define('ERROR_NOT_FOUND', 'Not Found...');
