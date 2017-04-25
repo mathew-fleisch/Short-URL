@@ -1,4 +1,4 @@
-# Link Shrinker
+# Short URL
 
 This application is similar to bit.ly where any user can submit a url, and it will give them back a shortened url that  automatically redirects, to the original url. 
 
