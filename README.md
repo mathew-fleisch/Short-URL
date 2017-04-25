@@ -10,7 +10,7 @@ This version was written in PHP using CodeIgniter v3.1.4, and uses Javascript/jQ
 
 ## Setup
 ```
-git clone git@github.com:mathew-fleisch/Link-Shrinker.git
+git clone git@github.com:mathew-fleisch/Short-URL.git
 cd ./Link-Shrinker
 vagrant up
 ```
